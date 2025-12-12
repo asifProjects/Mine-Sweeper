@@ -1,0 +1,200 @@
+:root{
+  --bg: #0f1724;
+  --panel: #0b1220;
+  --card: #0f1a2b;
+  --accent: #16a34a;
+  --muted: #93a0b3;
+  --danger: #ef4444;
+  --tile: #c6d3e0;
+  --tile-dark: #93a0b3;
+  --glass: rgba(255,255,255,0.04);
+  --radius: 10px;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: linear-gradient(180deg,#071126 0%, #0b1b2b 100%);
+  color:var(--tile);
+  font-family:var(--font-sans);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+/* App container */
+.app{
+  width:100%;
+  max-width:980px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-radius:14px;
+  padding:18px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Top bar */
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+}
+.title{
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:0.6px;
+}
+.controls{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.status{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin-right:6px;
+}
+.timer, .mines-left{
+  background:var(--glass);
+  padding:6px 10px;
+  border-radius:8px;
+  font-weight:600;
+  color:var(--tile);
+  min-width:72px;
+  text-align:center;
+}
+
+/* Buttons & select */
+.buttons{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+#resetBtn{
+  padding:6px 8px;
+  border-radius:8px;
+  border:none;
+  background:transparent;
+  color:var(--tile);
+  cursor:pointer;
+  font-size:18px;
+}
+#resetBtn:hover{transform:translateY(-1px)}
+select{
+  padding:6px 8px;
+  border-radius:8px;
+  border:none;
+  background:var(--glass);
+  color:var(--tile);
+}
+
+/* custom area */
+.custom-area{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding:8px 0 12px 0;
+}
+.custom-area label{
+  display:flex;
+  gap:6px;
+  align-items:center;
+  color:var(--muted);
+  font-size:14px;
+}
+.custom-area input{
+  width:72px;
+  padding:6px 8px;
+  border-radius:6px;
+  border:none;
+  background:var(--card);
+  color:var(--tile);
+  text-align:center;
+}
+.hidden{display:none}
+
+/* Board */
+.board-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
+  border-radius:10px;
+}
+.board{
+  display:grid;
+  gap:4px;
+  padding:12px;
+  background: rgba(255,255,255,0.02);
+  border-radius:8px;
+}
+
+/* Tile */
+.tile{
+  width:36px;
+  height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  border-radius:6px;
+  cursor:pointer;
+  user-select:none;
+  background:linear-gradient(180deg,#e7eef7,#d6e2ee);
+  color:#0b1220;
+  box-shadow: 0 2px 0 rgba(255,255,255,0.45) inset;
+  font-size:16px;
+}
+
+/* unrevealed look */
+.tile.unrevealed{
+  background: linear-gradient(180deg,#253544,#1b2a3a);
+  color:var(--tile);
+  box-shadow: 0 3px 0 rgba(0,0,0,0.35);
+}
+
+/* revealed look */
+.tile.revealed{
+  background: linear-gradient(180deg,#f2f7fb,#e6eef7);
+  color: #0b1220;
+  box-shadow: none;
+  cursor:default;
+}
+
+/* flagged */
+.tile.flagged{
+  color:var(--danger);
+}
+
+/* explosion */
+.tile.mine{
+  background: linear-gradient(180deg,#ffb4b4,#ff6b6b);
+  color:#6b0b0b;
+}
+
+/* numbers colored similar to classic minesweeper */
+.tile.revealed[data-neighbors="1"]{ color:#0b6bd6; }
+.tile.revealed[data-neighbors="2"]{ color:#0b9a2b; }
+.tile.revealed[data-neighbors="3"]{ color:#e0533b; }
+.tile.revealed[data-neighbors="4"]{ color:#5b2fa1; }
+.tile.revealed[data-neighbors="5"]{ color:#ab2f2f; }
+.tile.revealed[data-neighbors="6"]{ color:#2f7f7f; }
+.tile.revealed[data-neighbors="7"]{ color:#000; }
+.tile.revealed[data-neighbors="8"]{ color:#7a7a7a; }
+
+/* small screens */
+@media (max-width:600px){
+  .tile{ width:30px; height:30px; font-size:14px }
+  .board{ gap:3px; padding:8px }
+  .app{ padding:12px }
+  .title{ font-size:18px }
+}

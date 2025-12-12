@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Minesweeper — Vanilla JS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="title">Minesweeper</div>
+      <div class="controls">
+        <div class="status">
+          <div class="timer" id="timer">00:00</div>
+          <div class="mines-left" id="mines-left">Mines: 0</div>
+        </div>
+        <div class="buttons">
+          <button id="resetBtn" title="Reset game">⟲</button>
+          <select id="preset">
+            <option value="easy">Easy (9×9, 10)</option>
+            <option value="medium" selected>Medium (16×16, 40)</option>
+            <option value="hard">Hard (16×30, 99)</option>
+            <option value="custom">Custom</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <section class="custom-area hidden" id="custom-area">
+      <label>Rows: <input id="rows" type="number" min="5" max="30" value="16"></label>
+      <label>Cols: <input id="cols" type="number" min="5" max="50" value="16"></label>
+      <label>Mines: <input id="mines" type="number" min="1" value="40"></label>
+      <button id="startCustom">Start</button>
+    </section>
+
+    <section class="board-wrap">
+      <div id="board" class="board" role="grid" aria-label="Minesweeper board"></div>
+    </section>
+
+    <footer class="instructions">
+      <p><strong>Left-click</strong> to reveal — <strong>Right-click</strong> (or long-press on mobile) to place/remove flag. First click is always safe.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
